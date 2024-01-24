@@ -1,0 +1,36 @@
+{
+  "name": "myplop",
+  "version": "0.0.0",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "pre": "echo 'Add test script here'",
+    "test": "echo 'Add test script here'",
+    "build": "webpack --config ./config/webpack/webpack.prod.js",
+    "build:npm": "pnpm npm:prepack && webpack --config ./config/webpack/webpack.prod.js && pnpm npm:postpack ",
+    "dev": "webpack --config ./config/webpack/webpack.dev.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "pnpm prettier . --write && pnpm prettier . --check",
+    "npm:prepack": "clean-package",
+    "npm:postpack": "clean-package restore",
+    "npm:publish": "npm publish",
+    "link-cli": "pnpm unlink --global && pnpm link --global",
+		"link-cli:dev": "cd lib && pnpm unlink --global && pnpm link --global",
+		"unlink-cli": "cd lib && pnpm unlink --global",
+		"unlink-cli:dev": "cd lib && pnpm unlink --global "
+  },
+  "devDependencies": {
+    "bundle-declarations-webpack-plugin": "^5.0.0",
+    "clean-package": "^2.2.0",
+    "copy-webpack-plugin": "^12.0.1",
+    "eslintrc": "workspace:*",
+    "prettierrc": "workspace:*",
+    "swc-loader": "^0.2.3",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.10.0",
+    "webpackrc": "workspace:*"
+  }
+}
