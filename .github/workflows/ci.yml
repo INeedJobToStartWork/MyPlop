@@ -1,13 +1,13 @@
-name: CI/CD
+name: CI
 
 on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    types: [opened, synchronize]
 
 jobs:
-  Deploy:
+  Continuous-Integration:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,10 +16,17 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 20
+          cache: "pnpm"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.4.0
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
-      - name: Lint-staging every workspaces
-        run: pnpm pre:husky
+      - name: Format Files
+        run: pnpm format
+      - name: Linting Files
+        run: pnpm lint:fix && pnpm lint
+      - name: Building Files
+        run: pnpm build
+      - name: Start Files
+        run: pnpm start
