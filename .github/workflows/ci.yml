@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
       - uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -18,8 +20,7 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.4.0
+
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
       - name: Format Files
