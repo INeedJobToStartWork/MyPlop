@@ -1,3 +1,4 @@
-import  WebpackConfigDev  from 'webpackrc/webpack.dev.js';
-import {merge} from "webpack-merge";
+import { merge } from "webpack-merge";
+import WebpackConfigDev from "webpackrc/webpack.dev.js";
+
 export default merge(WebpackConfigDev, {});

@@ -1,4 +1,6 @@
-import prettierConfig from "prettierrc/.prettierrc.json"
+// Eslint doesn't support `assert` because it's experimental
+import prettierConfig from "prettierrc/.prettierrc.json" assert { type: "json" };
+
 export default {
-    ...prettierConfig,
-}
+	...prettierConfig
+};

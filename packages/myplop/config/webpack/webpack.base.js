@@ -1,3 +1,4 @@
-import  WebpackConfig  from 'webpackrc/webpack.base.js';
-import {merge} from "webpack-merge";
+import { merge } from "webpack-merge";
+import WebpackConfig from "webpackrc/webpack.base.js";
+
 export default merge(WebpackConfig, {});

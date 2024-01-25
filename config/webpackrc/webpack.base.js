@@ -37,9 +37,9 @@ export default {
 		}
 	},
 	plugins: [
-		new CopyPlugin({
-			patterns: [{ from: path.resolve(__dirname, "./src/templates"), to: path.join(PATHOUT, "templates") }]
-		})
+		// new CopyPlugin({
+		// 	patterns: [{ from: path.resolve(__dirname, "./src/templates"), to: path.join(PATHOUT, "templates") }]
+		// })
 	],
 	target: "node"
 };

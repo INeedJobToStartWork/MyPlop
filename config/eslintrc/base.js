@@ -34,9 +34,12 @@ export default [
 			"@EslintPii": EslintPii,
 			"@EslintSecurity": EslintSecurity,
 			"@EslintSortKeys": EslintSortKeys,
-			"@stylistic/js": stylisticJs
+			"@stylistic/js": stylisticJs,
+	
+			
 		},
 		rules: {
+		
 			"array-callback-return": "error",
 			"constructor-super": "error",
 			"for-direction": "error",
@@ -275,7 +278,8 @@ export default [
 
 			"@stylistic/js/space-unary-ops": "error",
 			"@stylistic/js/spaced-comment": ["error", "always"],
-			"@stylistic/js/template-tag-spacing": ["error", "always"]
+			"@stylistic/js/template-tag-spacing": ["error", "always"],
+			
 		}
 	}
 ];
