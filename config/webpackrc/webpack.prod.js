@@ -17,4 +17,5 @@ export default merge(webpackBaseConfig, {
 	output: {
 		path: PATHOUT
 	}
+
 });

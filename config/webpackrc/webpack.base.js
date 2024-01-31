@@ -1,12 +1,12 @@
 import CopyPlugin from "copy-webpack-plugin";
-import path from "path";
+import { resolve } from "path";
 
-const __dirname = path.resolve();
-const PATHOUT = path.resolve(__dirname, "lib");
+const __dirname = resolve();
+const PATHOUT = resolve(__dirname, "lib");
 
 export default {
 	entry: {
-		index: path.resolve(__dirname, "src/index.ts")
+		index: resolve(__dirname, "src/index.ts")
 	},
 	module: {
 		rules: [
@@ -23,7 +23,7 @@ export default {
 	output: {
 		clean: true,
 		filename: "[name].cjs",
-		path: path.resolve(__dirname, "lib"),
+		path: resolve(__dirname, "lib"),
 		chunkLoading: false,
 		library: {
 			type: "commonjs2",
@@ -33,13 +33,8 @@ export default {
 	resolve: {
 		extensions: ["", ".ts", ".js", ".mjs", ".mts"],
 		alias: {
-			"@": path.resolve(__dirname, "src/")
+			"@": resolve(__dirname, "src/")
 		}
 	},
-	plugins: [
-		// new CopyPlugin({
-		// 	patterns: [{ from: path.resolve(__dirname, "./src/templates"), to: path.join(PATHOUT, "templates") }]
-		// })
-	],
 	target: "node"
 };

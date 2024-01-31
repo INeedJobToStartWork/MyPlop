@@ -3,6 +3,11 @@
 	"version": "0.0.0",
 	"private": false,
 	"type": "module",
+	"main": "src/index.ts",
+	"bin": {
+		"myplopDEV": "./lib/index.cjs",
+		"myplopPROD": "./dist/index.cjs"
+	},
 	"scripts": {
 		"build": "webpack --config ./config/webpack/webpack.prod.js",
 		"build:npm": "pnpm npm:prepack && webpack --config ./config/webpack/webpack.prod.js && pnpm npm:postpack ",
@@ -28,9 +33,11 @@
 		]
 	},
 	"devDependencies": {
+		"@clack/prompts": "^0.7.0",
 		"bundle-declarations-webpack-plugin": "^5.0.0",
 		"clean-package": "^2.2.0",
-		"copy-webpack-plugin": "^12.0.1",
+		"commander": "^11.1.0",
+		"copy-webpack-plugin": "^12.0.2",
 		"eslintrc": "workspace:*",
 		"prettier": "^3.1.1",
 		"prettierrc": "workspace:*",
@@ -40,6 +47,7 @@
 		"webpack": "^5.89.0",
 		"webpack-cli": "^5.1.4",
 		"webpack-merge": "^5.10.0",
-		"webpackrc": "workspace:*"
+		"webpackrc": "workspace:*",
+		"zod": "^3.22.4"
 	}
 }

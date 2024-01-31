@@ -16,7 +16,8 @@ export default [
 			"**/lib/**",
 			"**/*.d.ts",
 			"**/tsconfig.json",
-			"**/theme.config.jsx"
+			"**/theme.config.jsx",
+			"**/templates/**",
 		]
 	},
 	{
