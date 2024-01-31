@@ -1,0 +1,13 @@
+{
+	"indent": 4,
+	"remove": ["devDependencies", "dependencies", "lint-staged", "bin"],
+	"replace": {
+		"main": "index.cjs",
+		"scripts": {
+			"npm:postpack": "clean-package restore"
+		},
+		"bin": {
+			"create-myplop-config": "./index.cjs"
+		}
+	}
+}
