@@ -25,6 +25,8 @@ jobs:
         run: pnpm format
       - name: Linting Files
         run: pnpm lint:fix --force && pnpm lint --force
+        env:
+          ESLINT_USE_FLAT_CONFIG: ${{ secrets.ESLINT_USE_FLAT_CONFIG }}
       - name: Building Files
         run: pnpm build
       - name: Start Files
