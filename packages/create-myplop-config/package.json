@@ -5,7 +5,7 @@
 	"type": "module",
 	"bin": {
 		"create-myplop-configBUILD": "./dist/index.cjs",
-		"create-myplop-configDIV": "./lib/index.cjs"
+		"create-myplop-configDEV": "./lib/index.cjs"
 	},
 	"scripts": {
 		"build": "webpack --config ./config/webpack/webpack.prod.js",

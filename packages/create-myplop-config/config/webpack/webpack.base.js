@@ -7,9 +7,9 @@ const __dirname = resolve();
 const PATHOUT = resolve(__dirname, "lib");
 
 export default merge(WebpackConfig, {
-	plugins: [
-		new CopyPlugin({
-			patterns: [{ from: resolve(__dirname, "./src/templates"), to: join(PATHOUT, "templates") }]
-		})
-	]
+	// plugins: [
+	// 	new CopyPlugin({
+	// 		patterns: [{ from: resolve(__dirname, "./src/templates"), to: join(PATHOUT, "templates") }]
+	// 	})
+	// ]
 });
