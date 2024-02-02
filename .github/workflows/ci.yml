@@ -24,7 +24,7 @@ jobs:
       - name: Format Files
         run: pnpm format
       - name: Linting Files
-        run: pnpm lint:fix && pnpm lint
+        run: pnpm lint:fix --force && pnpm lint --force
       - name: Building Files
         run: pnpm build
       - name: Start Files
