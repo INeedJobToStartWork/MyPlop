@@ -21,6 +21,7 @@ out/
 build
 **/build/**
 dist
+dist/**
 **/dist/**
 lib
 **/lib/**
@@ -49,4 +50,4 @@ next-env.d.ts
 .turbo
 .gitignore
 .vscode/settings.json
-packages/myplop/dist/index.cjs
+
