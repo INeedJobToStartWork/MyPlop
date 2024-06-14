@@ -3,13 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
-  "scripts": {
-    "dev": "echo 'Add dev script here'",
-    "build": "echo 'Add build script here'",
-    "test": "echo 'Add test script here'",
-    "lint": "echo 'Add test script here'",
-    "pre": "echo 'Add test script here'"
-  },
+  "scripts": {},
   "devDependencies": {
     "@stylistic/eslint-plugin": "^1.5.1",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
