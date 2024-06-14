@@ -4,7 +4,7 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
 	...config,
-	splitting: true,
+
 	minify: true,
 	shims: true,
 	outDir: "dist",

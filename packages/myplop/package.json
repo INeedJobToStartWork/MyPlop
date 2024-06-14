@@ -5,13 +5,14 @@
 	"type": "module",
 	"main": "src/index.ts",
 	"bin": {
-		"myplopDEV": "./lib/index.cjs",
-		"myplopPROD": "./dist/index.cjs"
+		"myplopDEV": "./lib/index.js",
+		"myplopPROD": "./dist/index.js"
 	},
 	"scripts": {
 		"build": "pnpm tsup --config ./config/tsuprc/tsup.prod.ts",
 		"build:npm": "pnpm npm:prepack && pnpm tsup --config ./config/tsuprc/tsup.prod.ts && pnpm npm:postpack",
 		"dev": "pnpm tsup --config ./config/tsuprc/tsup.dev.ts",
+		"dev2": "pnpm tsup ./src/index.ts",
 		"format": "pnpm prettier . --write && pnpm prettier . --check",
 		"link-cli": "pnpm unlink --global && pnpm link --global",
 		"link-cli:dev": "cd lib && pnpm unlink --global && pnpm link --global",
@@ -22,8 +23,7 @@
 		"npm:publish": "npm publish",
 		"pre": "echo 'Add test script here'",
 		"test": "echo 'Add test script here'",
-		"unlink-cli": "cd lib && pnpm unlink --global",
-		"unlink-cli:dev": "cd lib && pnpm unlink --global "
+		"unlink-cli": "pnpm unlink --global"
 	},
 	"lint-staged": {
 		"*": [
@@ -35,11 +35,11 @@
 	"dependencies": {
 		"@clack/prompts": "^0.7.0",
 		"chalk": "^5.3.0",
+		"commander": "^11.1.0",
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
 		"clean-package": "^2.2.0",
-		"commander": "^11.1.0",
 		"esbuild": "^0.21.5",
 		"esbuild-plugin-copy": "^2.1.1",
 		"eslintrc": "workspace:*",

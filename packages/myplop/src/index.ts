@@ -1,11 +1,15 @@
+#!/usr/bin/env node
 import { checkSystem, configPath } from "@/function";
 import "@/cli";
 import chalk from "chalk";
 import { program } from "commander";
 
+import path from "path";
+const DIRNAME = path.resolve();
+
 process.env.OS = checkSystem();
 process.env.USERPATH = process.cwd();
-process.env.PACKAGEPATH = __dirname;
+process.env.PACKAGEPATH = DIRNAME;
 process.env.CONFIGPATH = configPath();
 
 const userSystem = process.env.OS;
@@ -26,4 +30,4 @@ declare global {
 	}
 }
 
-program.parse(process.argv);
+program.parse();
