@@ -4,19 +4,24 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "turbo dev",
     "build": "turbo build",
     "build:npm": "turbo build:npm",
-    "dev": "turbo dev",
+    "start": "turbo start",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "format": "turbo format",
     "clean": "turbo clean",
     "npm:prepack": "turbo npm:prepack",
     "npm:postpack": "turbo npm:postpack",
-    "npm:publish": "turbo npm:publish",
-    "preinstall": "husky install",
+    "npm:version": "changeset version",
+    "npm:publish": "changeset publish",
+    "preinstall": "husky init",
     "pre": "turbo pre",
-    "pre:husky": "git add . && npx lint-staged"
+    "pre:husky": "git add . && lint-staged",
+    "prepare": "husky",
+    
+    "test": "echo \"Error: no test specified\""
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.5",
