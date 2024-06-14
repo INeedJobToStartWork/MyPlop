@@ -19,13 +19,13 @@
     "pre:husky": "git add . && npx lint-staged"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "@types/node": "^20.11.5",
+    "@changesets/cli": "^2.27.5",
+    "@types/node": "^20.14.2",
     "commitsmile": "^0.4.0",
     "globals": "^13.24.0",
     "husky": "^8.0.3",
     "js-yaml": "^4.1.0",
-    "lint-staged": "^15.2.0",
+    "lint-staged": "^15.2.7",
     "prettierrc": "workspace:*",
     "turbo": "latest"
   },
