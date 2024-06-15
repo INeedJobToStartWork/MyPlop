@@ -2,7 +2,7 @@ import { checkSystem } from ".";
 import { join } from "path";
 
 export const configPath = () => {
-	const userSystem = checkSystem();
+	const userSystem = checkSystem;
 	if (userSystem == "windows") {
 		return join(process.env.APPDATA, "MyPlop");
 	}

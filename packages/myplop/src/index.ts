@@ -5,15 +5,16 @@ import chalk from "chalk";
 import { program } from "commander";
 
 import path from "path";
-const DIRNAME = path.resolve();
+import { fileURLToPath } from "url";
+import logging from "./utils/logging";
 
-process.env.OS = checkSystem();
+process.env.OS = checkSystem;
 process.env.USERPATH = process.cwd();
-process.env.PACKAGEPATH = DIRNAME;
+process.env.PACKAGEPATH = path.dirname(fileURLToPath(import.meta.url));
 process.env.CONFIGPATH = configPath();
 
 if (process.env.OS != "windows") {
-	console.log(chalk.bgRed(" ERROR "), "Currently Version support only Windows - Sorry");
+	logging.log(chalk.bgRed(" ERROR "), "Currently Version support only Windows - Sorry");
 	process.exit(1);
 }
 
@@ -21,7 +22,7 @@ declare global {
 	module NodeJS {
 		// @ts-expect-error - ProcessEnv is default defined but we want to override it
 		export type ProcessEnv = Record<string, unknown> & {
-			OS: ReturnType<typeof checkSystem>;
+			OS: typeof checkSystem;
 			PACKAGEPATH: string;
 			CONFIGPATH: string;
 			USERPATH: string;
@@ -29,4 +30,4 @@ declare global {
 	}
 }
 
-program.parse();
+program.parse(process.argv);

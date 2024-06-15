@@ -24,10 +24,11 @@ prompter
 				const InstallingProcess = prompter.spinner();
 				InstallingProcess.start("App is installing...");
 				await existFilePrompt(destination);
-				copyFiles(templatePath, destination, true).catch(err => {
-					InstallingProcess.stop(`❌ error \n${err}`, 1);
-					// throw new Error(`${chalk.bgRed(" ERROR ")} Something went wrong induring coping files.\n${err}`);
-				});
+				const [data, isError] = copyFiles(templatePath, destination, true);
+				if (isError) {
+					InstallingProcess.stop(`❌ Error: ${data.message?.user}`, 1);
+					process.exit(1);
+				}
 				InstallingProcess.stop("✅", 0);
 			},
 			outro: () => {
