@@ -12,8 +12,7 @@ process.env.USERPATH = process.cwd();
 process.env.PACKAGEPATH = DIRNAME;
 process.env.CONFIGPATH = configPath();
 
-const userSystem = process.env.OS;
-if (userSystem != "windows") {
+if (process.env.OS != "windows") {
 	console.log(chalk.bgRed(" ERROR "), "Currently Version support only Windows - Sorry");
 	process.exit(1);
 }

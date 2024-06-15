@@ -10,7 +10,7 @@ export default defineConfig({
 	esbuildPlugins: [
 		copy({
 			assets: [
-				{ from: "./src/templates/configs/*", to: "./templates/configs" }
+				{ from: "./src/templates/**", to: "./configs" }
 				// { from: "./package.json", to: "./package.json" }
 			]
 		})
