@@ -5,17 +5,10 @@
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import { z } from "zod";
-// let readConfig = ;
-// readConfig.current.config = results.selectedConfig;
-// writeFileSync(join(process.env.CONFIGPATH, "settings.json"), JSON.stringify(readConfig));
-// 	return [read, write];
-// };
-// Copilot write here function which will read and edit config file.
 
 export const configScheme = z.object({
-	config: z.string().or(z.null()),
-	profile: z.string().or(z.null()),
-	category: z.string().or(z.null())
+	config: z.string().or(z.undefined()),
+	profile: z.string().or(z.undefined())
 });
 
 export const config = () => {

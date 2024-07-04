@@ -23,7 +23,7 @@ program
 					prompter.note(`Currently selected profile:\n${state.profile}`, chalk.bgBlue(" Info "));
 				},
 				selectedprofile: async () => {
-					if (state.config === null) {
+					if (state.config === void 0) {
 						prompter.cancel("You need to select config first.");
 						process.exit(1);
 					}

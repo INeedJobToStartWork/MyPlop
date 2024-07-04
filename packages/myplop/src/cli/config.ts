@@ -37,7 +37,7 @@ program
 				},
 				selecting: ({ results }) => {
 					if (results.selectedConfig === state.config) return;
-					setState(e => ({ ...e, config: results.selectedConfig!, profile: null, category: null }));
+					setState(e => ({ ...e, config: results.selectedConfig!, profile: void 0 }));
 					logging.debug("Config state: ", state);
 				},
 				outro: () => {

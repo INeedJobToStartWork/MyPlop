@@ -13,16 +13,12 @@ program.action(() => {
 					prompter.intro(chalk.bgCyan(" MyPlop "));
 				},
 				selectAction: () => {
-					if (state.config === null) {
+					if (state.config === void 0) {
 						prompter.cancel("You need to select config first.");
 						process.exit(1);
 					}
-					if (state.profile === null) {
+					if (state.profile === void 0) {
 						prompter.cancel("You need to select profile first.");
-						process.exit(1);
-					}
-					if (state.category === null) {
-						prompter.cancel("You need to select category first.");
 						process.exit(1);
 					}
 				}
