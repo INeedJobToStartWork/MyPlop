@@ -21,7 +21,7 @@ program
 							message: "What do you want to select?",
 							initialValue: "app",
 							options: [
-								{ label: "Config", value: "config.ts"},
+								{ label: "Config", value: "config.ts" },
 								{ label: "Profile", value: "profile.ts" }
 							]
 						}),
