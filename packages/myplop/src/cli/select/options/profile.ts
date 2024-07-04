@@ -1,44 +1,49 @@
+import { program } from "commander";
 import * as prompter from "@clack/prompts";
 import chalk from "chalk";
-import { resolve } from "path";
-import { copyFiles, existFilePrompt } from "@/function";
+import logging from "@/utils/logging";
+import { join } from "path";
+import { config } from "@/function/config";
+import { scanDir } from "@/function";
 
+const [state, setState] = config();
 prompter
-	.group(
-		{
-			ConfirmProcess: async () => {
-				prompter.note(`Initialize app at: \n'${chalk.blue(process.env.CONFIGPATH)}'`, chalk.bgGreen(" ACTIONS "));
-				const continueAction = await prompter.confirm({ message: "Do you want to continue?" });
-				if (prompter.isCancel(continueAction) || !continueAction) {
-					prompter.cancel("Canceled.");
-					process.exit(0);
-				}
-			},
-			Installation: async () => {
-				const destination = process.env.CONFIGPATH!;
-				const templatePath = resolve(process.env.PACKAGEPATH!, "./templates/app/installation/");
-
-				const InstallingProcess = prompter.spinner();
-				InstallingProcess.start("App is installing...");
-				await existFilePrompt(destination);
-				const [data, isError] = copyFiles(templatePath, destination, true);
-				if (isError) {
-					InstallingProcess.stop(`❌ Error: ${data.message?.user}`, 1);
-					process.exit(1);
-				}
-				InstallingProcess.stop("✅", 0);
-			},
-			outro: async () => {
-				prompter.outro(chalk.bgGreen(" App has been installed! "));
-			}
+	.group({
+		intro: () => {
+			prompter.intro(chalk.bgCyan(" Select profile "));
 		},
-		{
-			onCancel: () => {
-				console.log(chalk.bgRed("Canceled"));
-				process.exit(0);
+		currentlyChecked: () => {
+			prompter.note(`Currently selected profile:\n${state.profile}`, chalk.bgBlue(" Info "));
+		},
+		selectedprofile: async () => {
+			if (state.config === void 0) {
+				prompter.cancel("You need to select config first.");
+				process.exit(1);
 			}
+			logging.debug("profile path: ", process.env.CONFIGPATH);
+
+			const pathToScan = join(process.env.CONFIGPATH, "config", state.config, "profiles");
+			const profiles = scanDir(pathToScan, "profile");
+
+			logging.debug("Found Profiles:", profiles);
+			const selected = await prompter.select({
+				message: "Select profile",
+				initialValue: state.profile,
+				options: profiles.map(({ name }) => ({ label: name, value: name }))
+			});
+			logging.debug("Selected profile: ", selected);
+
+			return selected;
+		},
+		selecting: ({ results }) => {
+			if (results.selectedprofile === state.profile) return void 0;
+			setState(e => ({ ...e, profile: results.selectedprofile! }));
+			logging.debug("Profile state: ", state);
+		},
+		outro: () => {
+			prompter.outro(chalk.bgGreen(" Profile Selected! "));
 		}
-	)
+	})
 	.catch(e => {
 		throw e;
 	});

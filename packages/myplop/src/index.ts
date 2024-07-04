@@ -18,8 +18,6 @@ if (process.env.OS != "windows") {
 	process.exit(1);
 }
 
-// @ts-expect-error - ProcessEnv is default defined but we want to override it
-
 declare global {
 	module NodeJS {
 		export interface ProcessEnv extends Record<string, unknown> {
